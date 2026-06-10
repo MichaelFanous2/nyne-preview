@@ -67,7 +67,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(249,244,230,.85);backdrop-f
   background:
     radial-gradient(70% 55% at 85% 0%, rgba(212,232,219,.6) 0%, transparent 60%),
     radial-gradient(50% 60% at 0% 100%, rgba(61,102,80,.10) 0%, transparent 55%), var(--cream)}
-.hero-in{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:72px 0 64px}
+.hero-in{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:72px 32px 64px}
 h1{font-size:clamp(32px,4.4vw,50px);font-weight:500;letter-spacing:-.02em;line-height:1.02;text-transform:uppercase}
 h1 em{font-style:normal;color:var(--green-600)}
 .stats{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap}
@@ -117,7 +117,7 @@ section{padding:88px 0}
 .fan-sec{position:relative;padding:0;background:var(--green-950)}
 .fan-canvas{position:absolute;inset:0;overflow:hidden}
 .fan-canvas svg{position:absolute;inset:0;width:100%;height:100%}
-.fan-in{position:relative;display:grid;grid-template-columns:330px 1fr;gap:40px;align-items:center;padding:84px 0;z-index:2}
+.fan-in{position:relative;display:grid;grid-template-columns:330px 1fr;gap:40px;align-items:center;padding:84px 32px;z-index:2}
 .fan-copy h2{color:var(--offwhite)}
 .fan-diagram{position:relative}
 .fan-diagram svg{width:100%;height:auto;display:block}
@@ -138,7 +138,7 @@ section{padding:88px 0}
 @keyframes spin{to{transform:rotate(360deg)}}
 .fagent-t{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.04em;fill:var(--signal);opacity:.9}
 .ftile{fill:var(--cream)}
-.fan-foot{position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap;padding:0 0 64px}
+.fan-foot{position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap;padding:0 32px 64px}
 .fan-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(249,250,246,.75);
   border:1px solid rgba(249,244,230,.25);border-radius:999px;padding:6px 12px}
 
@@ -147,7 +147,7 @@ section{padding:88px 0}
 .art-bg{position:absolute;inset:0;background:url('assets/grande-jatte.jpg') center 38%/cover no-repeat}
 .art-bg::after{content:'';position:absolute;inset:0;
   background:linear-gradient(90deg, rgba(20,38,30,.92) 0%, rgba(20,38,30,.78) 38%, rgba(20,38,30,.25) 100%)}
-.art-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;padding:92px 0;align-items:center}
+.art-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;padding:92px 32px;align-items:center}
 .art-copy h2{color:var(--offwhite)}
 .art-credit{margin-top:22px;font-size:11px;color:rgba(249,250,246,.45);max-width:380px;line-height:1.5}
 .pstack{position:relative;display:flex;flex-direction:column;gap:14px;max-width:480px;margin-left:auto}
@@ -306,13 +306,13 @@ section{padding:88px 0}
 .foot-sec{position:relative;overflow:hidden;background:var(--green-950);padding:0}
 .foot-art{position:absolute;inset:0;background:url('assets/grande-jatte-sketch.jpg') center/cover no-repeat;opacity:.35;filter:saturate(.8)}
 .foot-art::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg, rgba(20,38,30,.9) 0%, rgba(20,38,30,.65) 100%)}
-.foot-in{position:relative;z-index:2;text-align:center;padding:96px 0}
+.foot-in{position:relative;z-index:2;text-align:center;padding:96px 32px}
 .foot-in h2{color:var(--offwhite);max-width:620px;margin:14px auto 0}
 .foot-in .sub{margin:16px auto 0;text-align:center}
 .foot-ctas{display:flex;gap:12px;justify-content:center;margin-top:32px}
 .cta.lt{background:var(--offwhite);color:var(--green-900)}
 .cta.olt{background:transparent;color:var(--offwhite);border:1px solid rgba(249,244,230,.4);box-shadow:none}
-.legal{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-top:1px solid rgba(249,244,230,.15);
+.legal{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;border-top:1px solid rgba(249,244,230,.15);
   font-size:11px;color:rgba(249,250,246,.45)}
 
 @media (max-width:980px){
@@ -334,15 +334,15 @@ html,body{overflow-x:hidden}
   .nl,.cta.ghost{display:none}
   .wrap{padding:0 20px}
   section{padding:56px 0}
-  .hero-in{padding:44px 0 36px;gap:28px}
+  .hero-in{padding:44px 20px 36px;gap:28px}
   h1{font-size:34px}
   .sub{font-size:15px}
   .stats{gap:16px 22px}
   .stat .n{font-size:18px}
   .agentline{font-size:12px;padding:7px 11px}
-  .fan-in{padding:56px 0;gap:24px}
-  .fan-foot{padding:0 0 44px}
-  .art-in{padding:60px 0;gap:28px}
+  .fan-in{padding:56px 20px;gap:24px}
+  .fan-foot{padding:0 20px 44px}
+  .art-in{padding:60px 20px;gap:28px}
   .pgrid{grid-template-columns:1fr 1fr}
   .agg{flex-wrap:wrap;gap:10px 16px}
   .agg .m{margin-left:0;width:100%;justify-content:space-between}
@@ -363,7 +363,7 @@ html,body{overflow-x:hidden}
   .ev{flex-wrap:wrap;row-gap:4px}
   .code .bd{font-size:10px;padding:12px;overflow-x:auto}
   .trust{gap:8px}
-  .foot-in{padding:64px 0}
+  .foot-in{padding:64px 20px}
   .legal{flex-direction:column;gap:6px;align-items:flex-start;text-align:left}
 }
 .fan-mobile{display:none}
