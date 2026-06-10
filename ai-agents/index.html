@@ -119,6 +119,18 @@ footer{border-top:1px solid var(--beige-300);padding:22px 0;font-size:11px;color
 footer a{color:var(--green-600)}
 @media (max-width:980px){.hero-in,.ctx-in,.grid3,.faq-grid{grid-template-columns:1fr}}
 @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;animation-delay:0s !important}.mini,.decision{opacity:1;transform:none}}
+
+/* ============ MOBILE (iOS) ============ */
+body{overflow-x:clip}
+@media (max-width:860px){
+  .nl{display:none}
+  .wrap{padding:0 20px}
+  section{padding:48px 0}
+  .hero-in{padding:40px 0;gap:28px}
+  .code pre{font-size:9.5px}
+  .ctx-in{gap:28px;padding:8px 0}
+  .mini .dt{font-size:9px}
+}
 </style>
 </head>
 <body>

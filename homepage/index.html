@@ -326,6 +326,45 @@ section{padding:88px 0}
   *{animation-duration:.01ms !important;animation-delay:0s !important;transition-duration:.01ms !important}
   .rv,.ev{opacity:1;transform:none}
 }
+
+/* ============ MOBILE (iOS) ============ */
+body{overflow-x:clip}
+.r .av + div{flex:1 1 auto;min-width:0}
+@media (max-width:860px){
+  .nl,.cta.ghost{display:none}
+  .wrap{padding:0 20px}
+  section{padding:56px 0}
+  .hero-in{padding:44px 0 36px;gap:28px}
+  h1{font-size:34px}
+  .sub{font-size:15px}
+  .stats{gap:16px 22px}
+  .stat .n{font-size:18px}
+  .agentline{font-size:12px;padding:7px 11px}
+  .fan-in{padding:56px 0;gap:24px}
+  .fan-foot{padding:0 0 44px}
+  .art-in{padding:60px 0;gap:28px}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .agg{flex-wrap:wrap;gap:10px 16px}
+  .agg .m{margin-left:0;width:100%;justify-content:space-between}
+  .sbar{padding:14px 16px}
+  .sbar .kbd{display:none}
+  .chips{padding:11px 16px}
+  .smeter{padding:13px 16px 0;flex-wrap:wrap}
+  .smeter .conf{margin-left:0;width:100%}
+  .r{flex-wrap:wrap;row-gap:6px}
+  .r .sig{margin-left:44px}
+  .sfoot{flex-direction:column;gap:6px;align-items:flex-start}
+  .sfoot code{white-space:normal;word-break:break-word}
+  .rec-grid{gap:14px}
+  .conduit{height:74px}
+  .conduit svg{display:none}
+  .api-grid{gap:28px}
+  .ev{flex-wrap:wrap;row-gap:4px}
+  .code .bd{font-size:10px;padding:12px;overflow-x:auto}
+  .trust{gap:8px}
+  .foot-in{padding:64px 0}
+  .legal{flex-direction:column;gap:6px;align-items:flex-start;text-align:left}
+}
 </style>
 <script type="application/ld+json">
 {
