@@ -328,7 +328,7 @@ section{padding:88px 0}
 }
 
 /* ============ MOBILE (iOS) ============ */
-body{overflow-x:clip}
+html,body{overflow-x:hidden}
 .r .av + div{flex:1 1 auto;min-width:0}
 @media (max-width:860px){
   .nl,.cta.ghost{display:none}
@@ -355,7 +355,8 @@ body{overflow-x:clip}
   .r .sig{margin-left:44px}
   .sfoot{flex-direction:column;gap:6px;align-items:flex-start}
   .sfoot code{white-space:normal;word-break:break-word}
-  .rec-grid{gap:14px}
+  .rec-grid{gap:14px;grid-template-columns:minmax(0,1fr)}
+  .panel{min-width:0;max-width:100%}
   .conduit{height:74px}
   .conduit svg{display:none}
   .api-grid{gap:28px}
@@ -364,6 +365,19 @@ body{overflow-x:clip}
   .trust{gap:8px}
   .foot-in{padding:64px 0}
   .legal{flex-direction:column;gap:6px;align-items:flex-start;text-align:left}
+}
+.fan-mobile{display:none}
+@media (max-width:860px){
+  .fan-diagram{display:none}
+  .fan-mobile{display:block}
+  .fan-mobile .fnodechip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(249,244,230,.85);color:var(--offwhite);
+    border-radius:10px;padding:9px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em}
+  .fan-mobile .fnodechip i{width:6px;height:6px;border-radius:50%;background:var(--signal)}
+  .fan-mobile .arrow{margin:10px 4px;color:rgba(249,244,230,.5);font-size:14px}
+  .fan-mobile .cats{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+  .fan-mobile .cats span{background:var(--offwhite);color:var(--ink);border-radius:8px;padding:7px 11px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.04em;display:inline-flex;align-items:center;gap:7px}
+  .fan-mobile .cats span i{width:5px;height:5px;border-radius:50%;background:var(--green-900)}
 }
 </style>
 <script type="application/ld+json">
@@ -520,6 +534,11 @@ body{overflow-x:clip}
       <div class="kicker lt rv">Enrichment</div>
       <h2 class="rv d1">Your data,<br>completed.</h2>
       <p class="sub lt rv d2">Bring a hashed email, a name, an address. Nyne matches it into the graph and returns the whole person: every attribute scored, sourced and time-stamped.</p>
+    </div>
+    <div class="fan-mobile rv d2" aria-hidden="false">
+      <span class="fnodechip"><i style="background:var(--green-400)"></i>YOUR RECORDS</span>
+      <div class="cats"><span><i></i>DEMOGRAPHICS</span><span><i></i>RESIDENCE</span><span><i></i>INCOME &amp; WEALTH</span><span><i></i>AFFINITIES</span><span><i></i>LIFE EVENTS</span><span><i></i>STATE / COUNTY / NATIONAL FILINGS</span><span><i></i>CONTACT</span><span><i></i>SOCIAL</span><span><i></i>CAREER &amp; COMPANY</span></div>
+      <span class="fnodechip"><i></i>COMPLETE PROFILES</span>
     </div>
     <div class="fan-diagram rv d2">
       <svg viewBox="0 0 880 560" id="fanSvg">
