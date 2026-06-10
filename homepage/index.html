@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nyne · The People Data Company — AI Agents for People Data</title>
+<meta name="description" content="Nyne is the people data company: structured, verified context on over two billion people, sourced and verified by autonomous AI agents and delivered through real-time APIs for AI agents, CRMs and brands.">
+<!--
+  Nyne.ai homepage concept — single cohesive page.
+  All people, households, companies and metrics are FICTIONAL / sample claims (replace before production).
+  Artwork: Georges Seurat, "A Sunday on La Grande Jatte" (1884) + oil sketch.
+  Art Institute of Chicago, CC0 public domain. assets/grande-jatte.jpg
+-->
+<link rel="canonical" href="https://nyne.ai/">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="theme-color" content="#274236">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nyne">
+<meta property="og:title" content="Nyne · The People Data Company">
+<meta property="og:description" content="Structured, verified context on over two billion people. Demographics, wealth, affinities and life events, sourced by autonomous AI agents and delivered through real-time APIs.">
+<meta property="og:url" content="https://nyne.ai/">
+<meta property="og:image" content="https://nyne.ai/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nyne · The People Data Company">
+<meta name="twitter:description" content="People data APIs for AI agents and brands: enrichment, audiences, life-event signals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-950:#1a3a2a;--green-900:#274236;--green-800:#2d4a3a;--green-700:#315e3c;
+  --green-600:#3d6650;--green-400:#6b9e7e;--green-200:#d4e8db;--green-100:#ecf5ef;--green-50:#f5faf7;
+  --cream:#f9f4e6;--offwhite:#f9faf6;--beige-100:#f7f5f0;--beige-200:#f0ebe4;--beige-300:#e8dfd3;
+  --ink:#181818;--text-2:#3c4257;--text-3:#697386;--signal:#4ade80;--code-bg:#0d1117;--code-header:#161b22;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Geist',-apple-system,sans-serif;color:var(--ink);background:var(--cream)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.mono{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green-600)}
+.kicker.lt{color:var(--green-200)}
+h2{font-size:clamp(28px,3.6vw,42px);font-weight:600;letter-spacing:-.02em;line-height:1.08;margin-top:14px}
+.sub{font-size:16px;line-height:1.55;color:var(--text-2);max-width:560px;margin-top:14px}
+.sub.lt{color:rgba(249,250,246,.75)}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+
+/* ============ NAV ============ */
+nav{position:sticky;top:0;z-index:50;background:rgba(249,244,230,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--beige-300)}
+.nav-in{display:flex;align-items:center;gap:28px;height:64px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:600;font-size:17px;letter-spacing:-.01em}
+.logo svg{width:30px;height:30px;fill:#274236}
+.hmark svg,.cmark svg,.smark svg{fill:#F9FAF6}
+.nl{margin-left:auto;display:flex;gap:26px;font-size:13.5px;color:var(--text-2)}
+.nl a{cursor:pointer;color:inherit;text-decoration:none}.nl a:hover{color:var(--ink)}
+.cta{text-decoration:none;display:inline-block;background:var(--green-900);color:var(--offwhite);font-size:13px;font-weight:600;padding:9px 18px;border-radius:8px;
+  box-shadow:0 4px 14px rgba(61,102,80,.25);cursor:pointer;white-space:nowrap}
+.cta:hover{background:var(--green-800)}
+.cta.ghost{background:transparent;color:var(--ink);border:1px solid var(--beige-300);box-shadow:none}
+
+/* ============ HERO ============ */
+.hero{position:relative;overflow:hidden;
+  background:
+    radial-gradient(70% 55% at 85% 0%, rgba(212,232,219,.6) 0%, transparent 60%),
+    radial-gradient(50% 60% at 0% 100%, rgba(61,102,80,.10) 0%, transparent 55%), var(--cream)}
+.hero-in{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:72px 0 64px}
+h1{font-size:clamp(32px,4.4vw,50px);font-weight:500;letter-spacing:-.02em;line-height:1.02;text-transform:uppercase}
+h1 em{font-style:normal;color:var(--green-600)}
+.stats{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap}
+.stat .n{font-family:'JetBrains Mono',monospace;font-size:21px;color:var(--green-600)}
+.stat .l{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-top:2px}
+.hero-ctas{display:flex;gap:12px;margin-top:30px}
+.agentline{display:inline-flex;align-items:center;gap:9px;margin-top:20px;padding:8px 14px;border-radius:8px;
+  border:1px solid var(--green-200);background:var(--green-50);font-size:13px;font-weight:500;color:var(--green-800)}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--signal);animation:blink 1.4s step-end infinite;flex-shrink:0}
+
+/* hero animation — ordered signal lanes converging through the mark into a card */
+.hv{position:relative;height:430px}
+.hlanes{position:absolute;inset:0;width:100%;height:100%}
+.hpillg rect{fill:#fff;stroke:var(--beige-300);stroke-width:1}
+.hpillg circle{fill:var(--green-400)}
+.hpillg circle.evd{fill:var(--signal)}
+.hpillg text{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;fill:var(--text-2)}
+.hlane{stroke:var(--green-400);stroke-width:1.1;fill:none;opacity:.45;stroke-dasharray:3 5;animation:lane 4s linear infinite}
+.hlane.hout{opacity:.6}
+.hp{fill:var(--green-600)}.hp2{fill:var(--green-400)}
+.hagent-ring{fill:none;stroke:var(--green-600);stroke-width:1;stroke-dasharray:2.5 3;opacity:.7;
+  transform-box:fill-box;transform-origin:center;animation:spin 3s linear infinite}
+.hagent-t{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.04em;fill:var(--green-600);opacity:.95}
+.hmark{position:absolute;left:calc(344/520*100% - 4px);top:112px;width:54px;height:54px;border-radius:13px;background:var(--green-900);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(39,66,54,.3);z-index:3}
+.hmark svg{width:36px;height:36px}
+.hcard{position:absolute;left:90px;top:238px;width:340px;background:#fff;border:1px solid var(--beige-300);border-radius:12px;
+  padding:14px 16px;box-shadow:0 18px 46px rgba(20,28,23,.12);z-index:3}
+.hfoot{display:flex;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid var(--beige-200);
+  font-size:10px;color:var(--text-3)}
+.hfoot .mono{font-size:10px}
+.hcard .top{display:flex;align-items:center;gap:10px}
+.hav img,.pav img,.r .av img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.hav{overflow:hidden;width:34px;height:34px;border-radius:50%;background:var(--green-600);color:var(--offwhite);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.hcard .ty{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3)}
+.hcard .nm{font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+.hgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px 12px;margin-top:11px}
+.hf .l{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-3)}
+.hf .v{font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:2px;white-space:nowrap;opacity:0;animation:hwipe 10s var(--ease) infinite;animation-delay:var(--fd)}
+@keyframes hwipe{0%,6%{opacity:0;clip-path:inset(0 100% 0 0)}11%{opacity:1;clip-path:inset(0 -2% 0 0)}96%{opacity:1}100%{opacity:0}}
+
+/* ============ SECTION SHELL ============ */
+section{padding:88px 0}
+.sec-head{max-width:660px}
+
+/* ============ FAN / ENRICHMENT (painted canvas) ============ */
+.fan-sec{position:relative;padding:0;background:var(--green-950)}
+.fan-canvas{position:absolute;inset:0;overflow:hidden}
+.fan-canvas svg{position:absolute;inset:0;width:100%;height:100%}
+.fan-in{position:relative;display:grid;grid-template-columns:330px 1fr;gap:40px;align-items:center;padding:84px 0;z-index:2}
+.fan-copy h2{color:var(--offwhite)}
+.fan-diagram{position:relative}
+.fan-diagram svg{width:100%;height:auto;display:block}
+.fpill{fill:var(--offwhite)}
+.fpill-t{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.04em;fill:var(--ink)}
+.fpill-sign{font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text-3)}
+.fdot{fill:var(--green-900)}
+.fline{stroke:rgba(249,244,230,.5);stroke-width:1.1;fill:none}
+.fgroup{transition:opacity .4s var(--ease)}
+.fgroup.dim{opacity:.42}
+.fgroup.hot .fline{stroke:var(--green-200);stroke-width:1.4}
+.fgroup.hot .fpill{fill:#fff}
+.fnode{fill:none;stroke:rgba(249,244,230,.85);stroke-width:1.2}
+.fnode-t{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;fill:var(--offwhite)}
+.fp{fill:var(--signal)}
+.fagent-ring{fill:none;stroke:var(--signal);stroke-width:1;stroke-dasharray:2.5 3;opacity:.75;
+  transform-box:fill-box;transform-origin:center;animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fagent-t{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.04em;fill:var(--signal);opacity:.9}
+.ftile{fill:var(--cream)}
+.fan-foot{position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap;padding:0 0 64px}
+.fan-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(249,250,246,.75);
+  border:1px solid rgba(249,244,230,.25);border-radius:999px;padding:6px 12px}
+
+/* ============ PERSONAS over the painting ============ */
+.art-sec{position:relative;padding:0;overflow:hidden;background:var(--green-950)}
+.art-bg{position:absolute;inset:0;background:url('assets/grande-jatte.jpg') center 38%/cover no-repeat}
+.art-bg::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg, rgba(20,38,30,.92) 0%, rgba(20,38,30,.78) 38%, rgba(20,38,30,.25) 100%)}
+.art-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;padding:92px 0;align-items:center}
+.art-copy h2{color:var(--offwhite)}
+.art-credit{margin-top:22px;font-size:11px;color:rgba(249,250,246,.45);max-width:380px;line-height:1.5}
+.pstack{position:relative;display:flex;flex-direction:column;gap:14px;max-width:480px;margin-left:auto}
+.glass{background:rgba(20,38,30,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(249,244,230,.24);border-radius:12px;color:var(--offwhite)}
+.pcard{padding:16px 18px}
+.pcard .top{display:flex;align-items:center;gap:11px}
+.pav{overflow:hidden;width:38px;height:38px;border-radius:50%;background:var(--green-600);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.pcard .ty{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:rgba(249,250,246,.55)}
+.pcard .nm{font-size:18px;font-weight:500;letter-spacing:-.01em;white-space:nowrap}
+.pcur{display:inline-block;width:1px;height:.9em;background:var(--offwhite);vertical-align:middle;margin-left:2px;animation:blink .7s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 14px;margin-top:13px}
+.pf .l{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(249,250,246,.5)}
+.pf .v{font-family:'JetBrains Mono',monospace;font-size:12px;margin-top:2px;white-space:nowrap}
+.pf .v.wipe{animation:pwipe .5s var(--ease) both;animation-delay:var(--pd)}
+@keyframes pwipe{from{opacity:0;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 -2% 0 0)}}
+.aff{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.aff span{font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 9px;border-radius:999px;
+  border:1px solid rgba(249,244,230,.25);color:rgba(249,250,246,.85)}
+.prow{display:flex;align-items:center;gap:8px;margin-top:13px;padding-top:12px;border-top:1px solid rgba(249,244,230,.16);flex-wrap:wrap}
+.sigp{display:inline-flex;align-items:center;gap:6px;height:23px;padding:0 10px;border-radius:999px;
+  background:rgba(74,222,128,.13);border:1px solid rgba(74,222,128,.4);
+  font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--signal)}
+.sigp i{width:6px;height:6px;border-radius:50%;background:var(--signal);animation:blink 1.4s step-end infinite}
+.confp{display:inline-flex;align-items:center;gap:6px;height:23px;padding:0 10px;border-radius:999px;
+  background:rgba(249,244,230,.08);border:1px solid rgba(249,244,230,.2);
+  font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(249,250,246,.85)}
+.agg{padding:13px 18px;display:flex;gap:24px;align-items:baseline}
+.agg .seg{font-size:12px;font-weight:600;letter-spacing:.02em}
+.agg .m{margin-left:auto;display:flex;gap:20px}
+.agg .m div{text-align:right}
+.agg .m .n{font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--signal)}
+.agg .m .l{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(249,250,246,.5)}
+.pdots{display:flex;gap:6px}
+.pdot{width:24px;height:3px;border-radius:2px;background:rgba(249,244,230,.25);overflow:hidden}
+.pdot i{display:block;height:100%;background:rgba(249,244,230,.9);transform:scaleX(0);transform-origin:left}
+.pdot.on i{animation:pfill 5s linear forwards}
+@keyframes pfill{to{transform:scaleX(1)}}
+
+/* ============ SEARCH ============ */
+.search-sec{background:
+  radial-gradient(60% 50% at 10% 0%, rgba(212,232,219,.5) 0%, transparent 60%), var(--cream)}
+.spanel{margin-top:40px;background:#fff;border:1px solid var(--beige-300);border-radius:16px;overflow:hidden;
+  box-shadow:0 18px 46px rgba(20,28,23,.12),0 4px 12px rgba(20,28,23,.06)}
+.sbar{display:flex;align-items:center;gap:12px;padding:17px 20px;border-bottom:1px solid var(--beige-200)}
+.smark{width:32px;height:32px;border-radius:8px;background:var(--green-900);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.smark svg{width:21px;height:21px}
+.sq{flex:1;font-size:15px;letter-spacing:-.01em;min-height:21px}
+.sq .ph{color:var(--text-3)}
+.scur{display:inline-block;width:1px;height:1em;background:var(--ink);vertical-align:text-bottom;margin-left:1px;animation:blink .7s step-end infinite}
+.kbd{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-3);border:1px solid var(--beige-300);border-radius:5px;padding:3px 7px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:13px 20px;border-bottom:1px solid var(--beige-200);background:var(--beige-100)}
+.chip{height:26px;display:inline-flex;align-items:center;gap:6px;padding:0 11px;border-radius:999px;font-size:11px;font-weight:600;
+  background:#fff;border:1px solid var(--beige-300);color:var(--text-3);transition:all .35s var(--ease)}
+.chip i{width:6px;height:6px;border-radius:50%;background:var(--beige-300);transition:background .35s var(--ease)}
+.chip.on{background:var(--green-100);border-color:var(--green-200);color:var(--green-800);transform:translateY(-1px)}
+.chip.on i{background:var(--green-600)}
+.smeter{display:flex;align-items:baseline;gap:14px;padding:15px 20px 2px}
+.smeter .n{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:500;color:var(--green-600);letter-spacing:-.02em}
+.smeter .cap{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.smeter .conf{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2)}
+.smeter .conf b{color:var(--green-600);font-weight:500}
+.sres{padding:6px 12px 12px;min-height:186px}
+.r{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;opacity:0;transform:translateY(10px);transition:all .45s var(--ease)}
+.r.show{opacity:1;transform:none}
+.r:hover{background:var(--green-50)}
+.r .av{overflow:hidden;width:32px;height:32px;border-radius:50%;background:var(--green-200);color:var(--green-900);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
+.r .nm{font-size:13px;font-weight:600;letter-spacing:-.01em}
+.r .tt{font-size:11px;color:var(--text-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.r .sig{margin-left:auto;flex-shrink:0;display:inline-flex;align-items:center;height:21px;padding:0 9px;border-radius:999px;
+  background:var(--green-100);border:1px solid var(--green-200);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green-800)}
+.r .sc{flex-shrink:0;width:44px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green-600)}
+.sfoot{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:var(--code-bg)}
+.sfoot code{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8b949e}
+.sfoot code b{color:var(--signal);font-weight:500}
+.lat{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#8b949e}
+.lat i{width:6px;height:6px;border-radius:50%;background:var(--signal);animation:blink 1.4s step-end infinite}
+
+/* ============ RECORD ENRICH ============ */
+.rec-sec{background:var(--beige-100);border-top:1px solid var(--beige-300);border-bottom:1px solid var(--beige-300)}
+.rec-grid{display:grid;grid-template-columns:1fr 120px 1.2fr;gap:0;align-items:center;margin-top:44px}
+.panel{background:#fff;border:1px solid var(--beige-300);border-radius:12px;box-shadow:0 4px 14px rgba(61,102,80,.12)}
+.panel .hd{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--beige-200)}
+.panel .hd .t{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3)}
+.pill{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:999px}
+.pill.grey{background:var(--beige-100);color:var(--text-3);border:1px solid var(--beige-300)}
+.pill.green{background:var(--green-100);color:var(--green-800);border:1px solid var(--green-200)}
+.panel .bd{padding:12px 16px}
+.rrow{display:flex;align-items:baseline;gap:10px;padding:6px 0;border-bottom:1px dashed var(--beige-200)}
+.rrow:last-of-type{border-bottom:none}
+.rrow .l{width:96px;flex-shrink:0;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-3)}
+.rrow .v{font-family:'JetBrains Mono',monospace;font-size:12px}
+.rrow .v.miss{color:var(--beige-300);letter-spacing:.1em}
+.cbar{margin-top:12px}
+.cbar .cap{display:flex;justify-content:space-between;font-size:10px;color:var(--text-3);margin-bottom:4px}
+.cbar .cap b{font-family:'JetBrains Mono',monospace;color:var(--ink);font-weight:500}
+.track{height:5px;border-radius:3px;background:var(--beige-200);overflow:hidden}
+.fillb{height:100%;border-radius:3px;background:var(--green-600);transform-origin:left;transform:scaleX(.38);transition:transform .5s var(--ease)}
+.conduit{position:relative;height:240px}
+.conduit svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.lane{stroke:var(--green-400);stroke-width:1;fill:none;opacity:.45;stroke-dasharray:3 5;animation:lane 4s linear infinite}
+@keyframes lane{to{stroke-dashoffset:-64}}
+.cmark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:13px;
+  background:var(--green-900);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(39,66,54,.3)}
+.cmark svg{width:36px;height:36px}
+.cp{fill:var(--green-600)}.cp2{fill:var(--green-400)}
+.chip-h{display:inline-flex;align-items:center;height:19px;padding:0 9px;border-radius:999px;margin:6px 0 2px;
+  background:var(--green-100);border:1px solid var(--green-200);
+  font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--green-800)}
+.erow{display:flex;align-items:baseline;gap:9px;padding:4.5px 0 4.5px 4px}
+.erow .l{width:92px;flex-shrink:0;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-3)}
+.erow .v{font-family:'JetBrains Mono',monospace;font-size:12px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.erow .sc{margin-left:auto;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green-600)}
+.reveal{opacity:0}
+.playrec .reveal{animation:rrev .5s var(--ease) both;animation-delay:var(--d)}
+@keyframes rrev{from{opacity:0;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 -2% 0 0)}}
+
+/* ============ API + SIGNALS ============ */
+.api-sec{background:var(--cream)}
+.api-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:44px}
+.code{border-radius:12px;overflow:hidden;background:var(--code-bg);box-shadow:0 18px 46px rgba(20,28,23,.18)}
+.code .hd{display:flex;gap:7px;align-items:center;background:var(--code-header);padding:9px 13px}
+.code .hd i{width:8px;height:8px;border-radius:50%}
+.code .hd .st{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--signal)}
+.code .bd{padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.8;color:#8b949e}
+.code .s{color:var(--signal)}.code .n{color:#79c0ff}.code .c{color:#6e7681}
+.evlist{display:flex;flex-direction:column;gap:10px;margin-top:26px}
+.ev{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--beige-300);border-radius:10px;padding:11px 14px;
+  opacity:0;transform:translateY(10px);transition:all .55s var(--ease)}
+.ev.in{opacity:1;transform:none}
+.ev .ico{width:30px;height:30px;border-radius:8px;background:var(--green-100);display:flex;align-items:center;justify-content:center;font-size:13px}
+.ev .t{font-size:12.5px;font-weight:600}
+.ev .d{font-size:11px;color:var(--text-3)}
+.ev .when{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green-600)}
+
+/* ============ FAQ ============ */
+.faq-sec{background:var(--cream)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;align-items:start}
+.faq-grid details{background:#fff;border:1px solid var(--beige-300);border-radius:12px;padding:16px 18px}
+.faq-grid summary{cursor:pointer;font-size:14.5px;font-weight:600;letter-spacing:-.01em;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-grid summary::after{content:'+';font-family:'JetBrains Mono',monospace;color:var(--green-600);font-size:16px;flex-shrink:0}
+.faq-grid details[open] summary::after{content:'−'}
+.faq-grid summary{outline:none}
+.faq-grid summary:focus-visible{outline:2px solid var(--green-400);outline-offset:4px;border-radius:6px}
+.faq-grid details p{margin-top:10px;font-size:13.5px;line-height:1.55;color:var(--text-2)}
+@media (max-width:980px){.faq-grid{grid-template-columns:1fr}}
+
+/* ============ TRUST ============ */
+.trust{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:34px 0;border-top:1px solid var(--beige-300)}
+.tr{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2);
+  border:1px solid var(--beige-300);border-radius:999px;padding:7px 14px;background:#fff}
+.tr b{color:var(--green-600);font-weight:500}
+
+/* ============ FOOTER CTA ============ */
+.foot-sec{position:relative;overflow:hidden;background:var(--green-950);padding:0}
+.foot-art{position:absolute;inset:0;background:url('assets/grande-jatte-sketch.jpg') center/cover no-repeat;opacity:.35;filter:saturate(.8)}
+.foot-art::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg, rgba(20,38,30,.9) 0%, rgba(20,38,30,.65) 100%)}
+.foot-in{position:relative;z-index:2;text-align:center;padding:96px 0}
+.foot-in h2{color:var(--offwhite);max-width:620px;margin:14px auto 0}
+.foot-in .sub{margin:16px auto 0;text-align:center}
+.foot-ctas{display:flex;gap:12px;justify-content:center;margin-top:32px}
+.cta.lt{background:var(--offwhite);color:var(--green-900)}
+.cta.olt{background:transparent;color:var(--offwhite);border:1px solid rgba(249,244,230,.4);box-shadow:none}
+.legal{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-top:1px solid rgba(249,244,230,.15);
+  font-size:11px;color:rgba(249,250,246,.45)}
+
+@media (max-width:980px){
+  .hero-in,.fan-in,.art-in,.api-grid{grid-template-columns:1fr}
+  .rec-grid{grid-template-columns:1fr}
+  .conduit{height:110px}
+  .pstack{margin:0}
+  .hv{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important;animation-delay:0s !important;transition-duration:.01ms !important}
+  .rv,.ev{opacity:1;transform:none}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nyne.ai/#org",
+      "name": "Nyne",
+      "alternateName": "Nyne.ai",
+      "url": "https://nyne.ai/",
+      "logo": "https://nyne.ai/logo.png",
+      "description": "Nyne is the people data company: structured, verified context on over two billion people, sourced by autonomous AI agents and delivered through real-time APIs.",
+      "sameAs": ["https://www.linkedin.com/company/nyne-ai"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nyne.ai/#website",
+      "url": "https://nyne.ai/",
+      "name": "Nyne",
+      "publisher": {"@id": "https://nyne.ai/#org"}
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://nyne.ai/#app",
+      "name": "Nyne People Data API",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "url": "https://nyne.ai/",
+      "publisher": {"@id": "https://nyne.ai/#org"},
+      "description": "Person enrichment, audience search and life-event signal APIs. Returns demographics, income and wealth, residence, affinities, life events, state, county and national filings, contact, social and career data with confidence scores and provenance.",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free sandbox credits"}
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nyne.ai/#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is a people data API?",
+         "acceptedAnswer": {"@type": "Answer", "text": "A people data API returns structured information about a person or household from an identifier such as an email, name or address. Nyne's people data API resolves the identifier against a graph of over two billion people and returns verified attributes with confidence scores, sources and timestamps."}},
+        {"@type": "Question", "name": "What data does Nyne's enrichment API return?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Demographics, residence, income and wealth, affinities, life events, state, county and national filings, contact, social and career and company data. Every field carries a confidence score, source and freshness timestamp."}},
+        {"@type": "Question", "name": "How does Nyne source its data?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Nyne's autonomous AI agents continuously source and verify data across the open web and public records, including state, county and national filings. Records are matched into the graph, deduplicated, scored and time-stamped."}},
+        {"@type": "Question", "name": "Can AI agents use Nyne?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Yes. Nyne is built for AI agents: one API call returns the structured person as typed JSON an agent can act on, and webhooks push life events into CRMs, CDPs and agent workflows in real time."}},
+        {"@type": "Question", "name": "Does Nyne cover consumers as well as professionals?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Both. Nyne covers consumer and household attributes such as demographics, wealth and affinities alongside professional context such as roles, companies and job changes, in one unified graph."}},
+        {"@type": "Question", "name": "Is Nyne privacy compliant?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Nyne is CCPA-ready: every field is sourced, opt-outs are honored, there are no shadow profiles and records are point-in-time auditable."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- shared mark path (hidden defs) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <path id="nynepath" d="M375.808 190.867C398.538 188.839 429.617 197.031 449.883 207.257C453.675 205.178 458.105 203.329 462.156 201.734C501.235 186.467 544.754 187.318 583.177 203.976C651.948 233.793 689.065 310.542 672.841 383.09C668.347 403.186 659.658 420.35 650.662 438.759L632.314 476.644L556.236 633.51C544.496 657.643 530.431 685.014 519.644 709.359C509.39 708.67 494.707 709.097 484.213 709.095L419.906 709.1C399.51 709.092 377.598 709.646 357.44 709.3C357.048 707.061 385.843 649.468 388.996 642.918L461.846 493.314L450.029 487.731C390.736 516.031 325.724 509.593 275.588 466.069C209.834 408.987 206.496 305.896 264.037 242.017C294.613 208.073 330.799 193.504 375.808 190.867ZM459.707 267.979C471.816 258.551 484.342 252.671 499.282 249.235C524.379 278.834 536.713 321.891 533.654 360.319C530.564 399.142 516.379 428.727 491.062 457.909C501.311 460.909 518.361 463.499 529.022 462.013C536.462 461.025 543.396 460.058 550.688 458.052C606.115 442.812 640.674 387.962 632.99 331.494C624.542 269.395 567.265 225.815 505.263 235.066C475.61 239.489 450.552 253.118 432.116 277.22C397.937 322.177 401.129 387.359 440.451 428.201C430.384 436.784 413.427 444.686 400.347 446.867C353.69 390.84 355.205 304.279 400.579 249.669C403.83 245.758 407.653 242.093 410.742 238.231C401.516 236.2 382.337 232.308 373.318 233.883C366.286 234.675 359.556 235.38 352.573 236.994C295.563 250.171 259.883 304.953 266.725 362.399C273.591 420.049 324.026 464.089 382.223 462.109C385.222 462.058 388.252 461.589 391.213 461.315C478.008 453.271 520.537 350.491 470.223 281.17C466.87 276.549 463.206 272.43 459.707 267.979ZM502.529 503.875C499.136 512.001 493.697 522.41 489.765 530.486L469.822 571.534L423.896 666.637L471.826 666.878C478.217 666.872 487.638 667.107 493.849 666.583C501.846 648.439 576.557 499.342 576.574 495.162L576.322 494.971C550.588 503.42 529.626 507.116 502.529 503.875Z"/>
+</defs></svg>
+
+<!-- ============ NAV ============ -->
+<nav><div class="wrap nav-in">
+  <div class="logo"><img src="assets/nyne-logo.svg" alt="Nyne.ai" style="height:30px;display:block"></div>
+  <div class="nl"><a href="#people-data">People data</a><a href="#audiences">Audiences</a><a href="#api">Signals</a><a href="#api">API</a><a href="#faq">FAQ</a></div>
+  <a class="cta ghost" href="https://api.nyne.ai/documentation">Docs</a><a class="cta" href="https://nyne.ai" aria-label="Get API access">Get API access</a>
+</div></nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero"><div class="wrap hero-in">
+  <div>
+    <div class="kicker rv">The people layer of the internet</div>
+    <h1 class="rv d1">The people<br><em>data</em> company.</h1>
+    <p class="sub rv d2">Nyne resolves over two billion people into structured, verified context. Demographics, wealth, affinities and life events, delivered through real-time APIs built for AI agents and the brands that market to humans.</p>
+    <div class="agentline rv d2"><span class="live-dot"></span>Sourced and verified by autonomous AI agents, around the clock.</div>
+    <div class="stats rv d3">
+      <div class="stat"><div class="n mono">2B+</div><div class="l">People resolved</div></div>
+      <div class="stat"><div class="n mono">2,400+</div><div class="l">Attributes</div></div>
+      <div class="stat"><div class="n mono">184ms</div><div class="l">Median enrich</div></div>
+      <div class="stat"><div class="n mono">Live</div><div class="l">Event signals</div></div>
+    </div>
+    <div class="hero-ctas rv d3"><a class="cta" href="https://nyne.ai">Start enriching</a><a class="cta ghost" href="#enrichment">See the graph in action</a></div>
+  </div>
+
+  <div class="hv" aria-hidden="true">
+    <svg class="hlanes" viewBox="0 0 520 430">
+      <g class="hpillg">
+        <rect x="6" y="22" width="124" height="30" rx="6"/><circle cx="24" cy="37" r="3.5"/><text x="35" y="41">@em_marsh</text>
+        <rect x="6" y="72" width="142" height="30" rx="6"/><circle cx="24" cy="87" r="3.5"/><text x="35" y="91">GREENWICH, CT</text>
+        <rect x="6" y="122" width="152" height="30" rx="6"/><circle cx="24" cy="137" r="3.5" class="evd"/><text x="35" y="141">HOME PURCHASE</text>
+        <rect x="6" y="172" width="170" height="30" rx="6"/><circle cx="24" cy="187" r="3.5"/><text x="35" y="191">YACHT CLUB ROSTER</text>
+        <rect x="6" y="222" width="118" height="30" rx="6"/><circle cx="24" cy="237" r="3.5"/><text x="35" y="241">e.marsh@…</text>
+      </g>
+      <path class="hlane" d="M130 37 C 230 45, 280 90, 344 122"/>
+      <path class="hlane" d="M148 87 C 240 95, 285 110, 344 130"/>
+      <path class="hlane" d="M158 137 C 245 138, 290 138, 344 138"/>
+      <path class="hlane" d="M176 187 C 255 180, 295 162, 344 146"/>
+      <path class="hlane" d="M124 237 C 230 230, 290 180, 344 154"/>
+      <path class="hlane hout" d="M370 164 C 372 196, 350 210, 318 224"/>
+      <circle class="hp" r="3"><animateMotion dur="2.6s" repeatCount="indefinite" begin="0s"   path="M130 37 C 230 45, 280 90, 344 122"/></circle>
+      <circle class="hp2" r="2.5"><animateMotion dur="2.6s" repeatCount="indefinite" begin=".5s" path="M148 87 C 240 95, 285 110, 344 130"/></circle>
+      <circle class="hp" r="2.7"><animateMotion dur="2.6s" repeatCount="indefinite" begin="1s"  path="M158 137 C 245 138, 290 138, 344 138"/></circle>
+      <g><animateMotion dur="5.2s" repeatCount="indefinite" begin="1.5s" rotate="0" path="M176 187 C 255 180, 295 162, 344 146"/>
+        <circle class="hp" r="2.8"/><circle class="hagent-ring" r="6"/>
+        <text class="hagent-t" x="10" y="3">agent 03 · sourcing</text></g>
+      <circle class="hp" r="3"><animateMotion dur="2.6s" repeatCount="indefinite" begin="2s"  path="M124 237 C 230 230, 290 180, 344 154"/></circle>
+      <circle class="hp" r="3"><animateMotion dur="1.8s" repeatCount="indefinite" begin=".8s" path="M370 164 C 372 196, 350 210, 318 224"/></circle>
+      <circle class="hp2" r="2.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="1.7s" path="M370 164 C 372 196, 350 210, 318 224"/></circle>
+    </svg>
+    <div class="hmark"><svg viewBox="0 0 900 900"><use href="#nynepath"/></svg></div>
+    <div class="hcard">
+      <div class="top"><div class="hav"><img src="assets/people/elena.jpg" alt="Fictional example person"></div><div><div class="ty">Person · resolved from 6 signals</div><div class="nm" id="heroName"></div></div></div>
+      <div class="hgrid">
+        <div class="hf"><div class="l">Age</div><div class="v" style="--fd:0s">38</div></div>
+        <div class="hf"><div class="l">Household</div><div class="v" style="--fd:.1s">2 adults · 1 child</div></div>
+        <div class="hf"><div class="l">HH income</div><div class="v" style="--fd:.2s">$500K+</div></div>
+        <div class="hf"><div class="l">Residence</div><div class="v" style="--fd:.3s">Greenwich, CT</div></div>
+        <div class="hf"><div class="l">Affinities</div><div class="v" style="--fd:.4s">sailing · wine</div></div>
+        <div class="hf"><div class="l">Life event</div><div class="v" style="--fd:.5s;color:var(--green-600)">home buy · 18d</div></div>
+      </div>
+      <div class="hfoot"><span class="mono">POST /v1/person/enrich</span><span class="mono" style="color:var(--green-600)">200 · 184ms · 0.97</span></div>
+    </div>
+  </div>
+</div></header>
+
+<!-- ============ ENRICHMENT FAN (painted canvas) ============ -->
+<section class="fan-sec" id="enrichment">
+  <div class="fan-canvas" aria-hidden="true">
+    <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 760">
+      <defs>
+        <filter id="paint" x="-30%" y="-30%" width="160%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.011 0.016" numOctaves="4" seed="7" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="160"/>
+          <feGaussianBlur stdDeviation="1.2"/>
+        </filter>
+        <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter>
+      </defs>
+      <rect width="1440" height="760" fill="#24412f"/>
+      <g filter="url(#paint)">
+        <ellipse cx="1100" cy="120" rx="620" ry="300" fill="#3d6650" opacity=".75"/>
+        <ellipse cx="300" cy="660" rx="700" ry="320" fill="#1a3a2a" opacity=".9"/>
+        <ellipse cx="760" cy="380" rx="520" ry="240" fill="#315e3c" opacity=".65"/>
+        <ellipse cx="1340" cy="620" rx="460" ry="260" fill="#2d4a3a" opacity=".8"/>
+        <ellipse cx="180" cy="140" rx="380" ry="200" fill="#6b9e7e" opacity=".28"/>
+        <ellipse cx="900" cy="700" rx="420" ry="180" fill="#6b9e7e" opacity=".18"/>
+      </g>
+      <rect width="1440" height="760" filter="url(#grain)" opacity=".06" style="mix-blend-mode:overlay"/>
+    </svg>
+  </div>
+  <div class="wrap fan-in">
+    <div class="fan-copy">
+      <div class="kicker lt rv">Enrichment</div>
+      <h2 class="rv d1">Your data,<br>completed.</h2>
+      <p class="sub lt rv d2">Bring a hashed email, a name, an address. Nyne matches it into the graph and returns the whole person: every attribute scored, sourced and time-stamped.</p>
+    </div>
+    <div class="fan-diagram rv d2">
+      <svg viewBox="0 0 880 560" id="fanSvg">
+        <!-- your data -> mark -->
+        <path class="fline" d="M70 280 H 175"/>
+        <g>
+          <rect class="fpill" x="8" y="263" width="118" height="34" rx="8"/>
+          <circle class="fdot" cx="28" cy="280" r="3.5"/>
+          <text class="fpill-t" x="40" y="284">YOUR RECORDS</text>
+        </g>
+        <!-- mark tile -->
+        <rect class="ftile" x="178" y="252" width="56" height="56" rx="12"/>
+        <g transform="translate(186,260) scale(0.0445)" fill="#274236"><use href="#nynepath"/></g>
+        <!-- fan groups (path + pill); pills x=380 -->
+        <g class="fgroup" data-i="0">
+          <path class="fline" d="M234 268 C 290 268, 334 84, 394 84"/>
+          <rect class="fpill" x="394" y="67" width="168" height="34" rx="8"/>
+          <circle class="fdot" cx="414" cy="84" r="4"/><text class="fpill-t" x="426" y="88">DEMOGRAPHICS</text>
+          <path class="fline" d="M562 84 C 617 84, 662 262, 700 262"/>
+        </g>
+        <g class="fgroup" data-i="1">
+          <path class="fline" d="M234 271 C 290 271, 344 133, 404 133"/>
+          <rect class="fpill" x="404" y="116" width="148" height="34" rx="8"/>
+          <circle class="fdot" cx="424" cy="133" r="4"/><text class="fpill-t" x="436" y="137">RESIDENCE</text>
+          <path class="fline" d="M552 133 C 607 133, 662 266, 700 266"/>
+        </g>
+        <g class="fgroup" data-i="2">
+          <path class="fline" d="M234 274 C 290 274, 325 182, 385 182"/>
+          <rect class="fpill" x="385" y="165" width="186" height="34" rx="8"/>
+          <circle class="fdot" cx="405" cy="182" r="4"/><text class="fpill-t" x="417" y="186">INCOME &amp; WEALTH</text>
+          <path class="fline" d="M571 182 C 626 182, 662 270, 700 270"/>
+        </g>
+        <g class="fgroup" data-i="3">
+          <path class="fline" d="M234 277 C 290 277, 347 231, 407 231"/>
+          <rect class="fpill" x="407" y="214" width="142" height="34" rx="8"/>
+          <circle class="fdot" cx="427" cy="231" r="4"/><text class="fpill-t" x="439" y="235">AFFINITIES</text>
+          <path class="fline" d="M549 231 C 604 231, 662 274, 700 274"/>
+        </g>
+        <g class="fgroup" data-i="4">
+          <path class="fline" d="M234 280 C 290 280, 342 280, 402 280"/>
+          <rect class="fpill" x="402" y="263" width="152" height="34" rx="8"/>
+          <circle class="fdot" cx="422" cy="280" r="4"/><text class="fpill-t" x="434" y="284">LIFE EVENTS</text>
+          <path class="fline" d="M554 280 C 609 280, 662 278, 700 278"/>
+        </g>
+        <g class="fgroup" data-i="5">
+          <path class="fline" d="M234 283 C 290 283, 274 329, 334 329"/>
+          <rect class="fpill" x="334" y="312" width="288" height="34" rx="8"/>
+          <circle class="fdot" cx="354" cy="329" r="4"/><text class="fpill-t" x="366" y="333">STATE / COUNTY / NATIONAL FILINGS</text>
+          <path class="fline" d="M622 329 C 677 329, 662 282, 700 282"/>
+        </g>
+        <g class="fgroup" data-i="6">
+          <path class="fline" d="M234 286 C 290 286, 354 378, 414 378"/>
+          <rect class="fpill" x="414" y="361" width="128" height="34" rx="8"/>
+          <circle class="fdot" cx="434" cy="378" r="4"/><text class="fpill-t" x="446" y="382">CONTACT</text>
+          <path class="fline" d="M542 378 C 597 378, 662 286, 700 286"/>
+        </g>
+        <g class="fgroup" data-i="7">
+          <path class="fline" d="M234 289 C 290 289, 359 427, 419 427"/>
+          <rect class="fpill" x="419" y="410" width="118" height="34" rx="8"/>
+          <circle class="fdot" cx="439" cy="427" r="4"/><text class="fpill-t" x="451" y="431">SOCIAL</text>
+          <path class="fline" d="M537 427 C 592 427, 662 290, 700 290"/>
+        </g>
+        <g class="fgroup" data-i="8">
+          <path class="fline" d="M234 292 C 290 292, 325 476, 385 476"/>
+          <rect class="fpill" x="385" y="459" width="186" height="34" rx="8"/>
+          <circle class="fdot" cx="405" cy="476" r="4"/><text class="fpill-t" x="417" y="480">CAREER &amp; COMPANY</text>
+          <path class="fline" d="M571 476 C 626 476, 662 294, 700 294"/>
+        </g>
+        <!-- converge node -->
+        <rect class="fnode" x="638" y="261" width="200" height="38" rx="10"/>
+        <circle cx="658" cy="280" r="4" fill="#4ade80"/>
+        <text class="fnode-t" x="672" y="285">COMPLETE PROFILES</text>
+        <!-- traveling particles -->
+        <g><animateMotion dur="6.4s" repeatCount="indefinite" begin="0s" rotate="0" path="M234 268 C 290 268, 334 84, 394 84"/>
+          <circle class="fp" r="3"/><circle class="fagent-ring" r="6.5"/>
+          <text class="fagent-t" x="11" y="3">agent 07 · sourcing</text></g>
+        <circle class="fp" r="2.5"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1.1s" path="M234 280 C 290 280, 342 280, 402 280"/></circle>
+        <circle class="fp" r="3"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2.2s" path="M234 292 C 290 292, 325 476, 385 476"/></circle>
+        <circle class="fp" r="2.5"><animateMotion dur="3s" repeatCount="indefinite" begin="0.6s" path="M552 133 C 607 133, 662 266, 700 266"/></circle>
+        <g><animateMotion dur="6s" repeatCount="indefinite" begin="1.7s" rotate="0" path="M622 329 C 677 329, 662 282, 700 282"/>
+          <circle class="fp" r="3"/><circle class="fagent-ring" r="6.5"/>
+          <text class="fagent-t" x="11" y="3">agent 12 · verifying</text></g>
+        <circle class="fp" r="2.5"><animateMotion dur="3s" repeatCount="indefinite" begin="2.6s" path="M537 427 C 592 427, 662 290, 700 290"/></circle>
+      </svg>
+    </div>
+  </div>
+  <div class="wrap fan-foot">
+    <span class="fan-tag">match rate 92%+</span><span class="fan-tag">2,400+ attributes</span>
+    <span class="fan-tag">refreshed continuously</span><span class="fan-tag">sub-200ms enrich</span>
+  </div>
+</section>
+
+<!-- ============ PERSONAS over the painting ============ -->
+<section class="art-sec" id="people-data">
+  <div class="art-bg" aria-hidden="true"></div>
+  <div class="wrap art-in">
+    <div class="art-copy">
+      <div class="kicker lt rv">Consumer intelligence</div>
+      <h2 class="rv d1">Know the person,<br>not just the record.</h2>
+      <p class="sub lt rv d2">A move, a membership, a purchase, a post. Thousands of small signals resolve into one coherent picture of a real consumer. Audience-level when you're planning. Person-level when it's time to act.</p>
+      <div class="art-credit rv d3">Georges Seurat, <i>A Sunday on La Grande Jatte</i> (1884). The Art Institute of Chicago, public domain (CC0). Example people are fictional.</div>
+    </div>
+    <div class="pstack">
+      <div class="glass agg rv">
+        <span class="sigp" style="height:21px"><i></i>AUDIENCE</span>
+        <span class="seg" id="aggSeg">Luxury Travel Intenders</span>
+        <div class="m">
+          <div><div class="n mono" id="aggN">3.1M</div><div class="l">People</div></div>
+          <div><div class="n mono" id="aggF">92<span style="font-size:10px;color:rgba(249,250,246,.4)">/100</span></div><div class="l">Fit</div></div>
+          <div><div class="n mono" id="aggW">$310K</div><div class="l">Avg HH income</div></div>
+        </div>
+      </div>
+      <div class="glass pcard rv d1">
+        <div class="top">
+          <div class="pav" id="pAv">EM</div>
+          <div><div class="ty" id="pTy">Member · resolved</div><div class="nm"><span id="pName"></span><span class="pcur"></span></div></div>
+        </div>
+        <div class="pgrid" id="pGrid"></div>
+        <div class="aff" id="pAff"></div>
+        <div class="prow" id="pRow"></div>
+      </div>
+      <div class="pdots rv d2" id="pDots"><span class="pdot"><i></i></span><span class="pdot"><i></i></span><span class="pdot"><i></i></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEARCH ============ -->
+<section class="search-sec" id="audiences"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker rv">Audience builder</div>
+    <h2 class="rv d1">Describe the people.<br>Nyne finds them.</h2>
+    <p class="sub rv d2">Plain-language search across the graph: households, wealth, affinities, life events. Every match scored, every audience ready for activation or export.</p>
+  </div>
+  <div class="spanel rv d2">
+    <div class="sbar">
+      <div class="smark"><svg viewBox="0 0 900 900"><use href="#nynepath" fill="#F9FAF6" style="fill:#F9FAF6"/></svg></div>
+      <div class="sq"><span id="sq" class="ph">Describe the people you need…</span><span class="scur"></span></div>
+      <span class="kbd">⏎ search</span>
+    </div>
+    <div class="chips" id="schips"></div>
+    <div class="smeter">
+      <span class="n mono" id="scount">0</span><span class="cap">matches</span>
+      <span class="conf" id="sconf">avg confidence <b>—</b></span>
+    </div>
+    <div class="sres" id="sres"></div>
+    <div class="sfoot">
+      <code><b>GET</b> /v1/person/search?q=…&amp;min_confidence=0.85</code>
+      <span class="lat"><i></i><span id="slat">— ms</span></span>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ RECORD ENRICH ============ -->
+<section class="rec-sec" id="one-record"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker rv">One record, completed</div>
+    <h2 class="rv d1">From a loyalty email<br>to a whole household.</h2>
+  </div>
+  <div class="rec-grid rv d2" id="recStage">
+    <div class="panel">
+      <div class="hd"><span class="t">Your record</span><span class="pill grey">38% complete</span></div>
+      <div class="bd">
+        <div class="rrow"><span class="l">Name</span><span class="v">C. Hutchins</span></div>
+        <div class="rrow"><span class="l">Email</span><span class="v">c.hutchins@…</span></div>
+        <div class="rrow"><span class="l">Household</span><span class="v miss">—</span></div>
+        <div class="rrow"><span class="l">Residence</span><span class="v miss">—</span></div>
+        <div class="rrow"><span class="l">Affinities</span><span class="v miss">—</span></div>
+        <div class="rrow"><span class="l">Life events</span><span class="v miss">—</span></div>
+        <div class="cbar"><div class="cap"><span>Completeness</span><b>38%</b></div><div class="track"><div class="fillb"></div></div></div>
+      </div>
+    </div>
+    <div class="conduit" aria-hidden="true">
+      <svg viewBox="0 0 120 240" preserveAspectRatio="none">
+        <path id="rl1" class="lane" d="M0 70 C 30 70, 40 120, 60 120"/>
+        <path id="rl2" class="lane" d="M0 170 C 30 170, 40 120, 60 120"/>
+        <path id="rr1" class="lane" d="M60 120 C 85 120, 95 60, 120 60"/>
+        <path id="rr2" class="lane" d="M60 120 C 85 120, 95 180, 120 180"/>
+        <circle class="cp" r="2.8"><animateMotion dur="2.2s" repeatCount="indefinite" begin="0s"><mpath href="#rl1"/></animateMotion></circle>
+        <circle class="cp2" r="2.3"><animateMotion dur="2.2s" repeatCount="indefinite" begin="1.1s"><mpath href="#rl2"/></animateMotion></circle>
+        <circle class="cp" r="2.8"><animateMotion dur="2s" repeatCount="indefinite" begin="0.5s"><mpath href="#rr1"/></animateMotion></circle>
+        <circle class="cp2" r="2.3"><animateMotion dur="2s" repeatCount="indefinite" begin="1.5s"><mpath href="#rr2"/></animateMotion></circle>
+      </svg>
+      <div class="cmark"><svg viewBox="0 0 900 900"><use href="#nynepath" fill="#F9FAF6"/></svg></div>
+    </div>
+    <div class="panel">
+      <div class="hd"><span class="t">Nyne shows</span><span class="pill green reveal" style="--d:5.6s">verified · 0.96</span></div>
+      <div class="bd">
+        <span class="chip-h reveal" style="--d:.5s">Demographics</span>
+        <div class="erow reveal" style="--d:.8s"><span class="l">Age / HH</span><span class="v">61 · 2 adults</span><span class="sc">0.98</span></div>
+        <span class="chip-h reveal" style="--d:1.3s">Residence</span>
+        <div class="erow reveal" style="--d:1.6s"><span class="l">Home</span><span class="v">Naples, FL · est. $1.2M</span><span class="sc">0.96</span></div>
+        <span class="chip-h reveal" style="--d:2.1s">Income &amp; wealth</span>
+        <div class="erow reveal" style="--d:2.4s"><span class="l">HH income</span><span class="v">$350K+</span><span class="sc">0.89</span></div>
+        <span class="chip-h reveal" style="--d:2.9s">Affinities</span>
+        <div class="erow reveal" style="--d:3.2s"><span class="l">Top</span><span class="v">boating · golf · wine club</span><span class="sc">0.94</span></div>
+        <span class="chip-h reveal" style="--d:3.7s">Life events</span>
+        <div class="erow reveal" style="--d:4.0s"><span class="l">Latest</span><span class="v" style="color:var(--green-600)">home purchase · 18d ago</span><span class="sc">0.95</span></div>
+        <span class="chip-h reveal" style="--d:4.5s">Contact</span>
+        <div class="erow reveal" style="--d:4.8s"><span class="l">Phone</span><span class="v">+1 (239) ···-··71 · verified</span><span class="sc">0.93</span></div>
+        <div class="cbar"><div class="cap"><span>Completeness</span><b id="recPct">38%</b></div><div class="track"><div class="fillb" id="recFill"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ API + SIGNALS ============ -->
+<section class="api-sec" id="api"><div class="wrap">
+  <div class="api-grid">
+    <div>
+      <div class="kicker rv">Built for agents</div>
+      <h2 class="rv d1">Context your AI<br>can act on.</h2>
+      <p class="sub rv d2">One call returns the structured person: typed fields, confidence scores, provenance and freshness. Webhooks push life events the moment they're detected, into your CRM, CDP or agent workflow. It works both ways: Nyne's own autonomous AI agents continuously source and verify the data underneath.</p>
+      <div class="evlist">
+        <div class="ev"><div class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#3d6650" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5 8 2.5l5.5 5"/><path d="M4 6.8V13h8V6.8"/><path d="M6.7 13v-3.4h2.6V13"/></svg></div><div><div class="t">New mover</div><div class="d">household relocated · address verified</div></div><span class="when">2m ago</span></div>
+        <div class="ev"><div class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#3d6650" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13S2.5 9.6 2.5 5.9C2.5 4 4 2.9 5.5 2.9c1 0 2 .6 2.5 1.5C8.5 3.5 9.5 2.9 10.5 2.9 12 2.9 13.5 4 13.5 5.9 13.5 9.6 8 13 8 13Z"/></svg></div><div><div class="t">Life stage change</div><div class="d">newly married · registry signals</div></div><span class="when">11m ago</span></div>
+        <div class="ev"><div class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#3d6650" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2.5V13.5H13.5"/><path d="M4.5 10.5 7.5 7l2 2 3.5-4"/></svg></div><div><div class="t">Wealth event</div><div class="d">equity vesting window detected</div></div><span class="when">26m ago</span></div>
+        <div class="ev"><div class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#3d6650" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="11" height="8" rx="1.5"/><path d="M6 5V3.8A1.3 1.3 0 0 1 7.3 2.5h1.4A1.3 1.3 0 0 1 10 3.8V5"/><path d="M2.5 8.5h11"/></svg></div><div><div class="t">Job change</div><div class="d">new role · seniority increase</div></div><span class="when">38m ago</span></div>
+      </div>
+    </div>
+    <div class="code rv d2">
+      <div class="hd"><i style="background:var(--green-600)"></i><i style="background:var(--green-400)"></i><i style="background:var(--green-200)"></i><span class="st">200 · 184ms</span></div>
+      <div class="bd">
+<span class="c">// POST /v1/person/enrich</span><br>
+{ "email": <span class="s">"c.hutchins@example.com"</span> }<br><br>
+<span class="c">// response (sample, fictional)</span><br>
+{<br>
+&nbsp;&nbsp;"person": { "age": <span class="n">61</span>, "household": <span class="s">"2 adults"</span> },<br>
+&nbsp;&nbsp;"residence": { "city": <span class="s">"Naples, FL"</span>, "home_value": <span class="n">1200000</span> },<br>
+&nbsp;&nbsp;"affinities": [<span class="s">"boating"</span>, <span class="s">"golf"</span>, <span class="s">"wine"</span>],<br>
+&nbsp;&nbsp;"life_events": [{ "type": <span class="s">"home_purchase"</span>, "days_ago": <span class="n">18</span> }],<br>
+&nbsp;&nbsp;"confidence": <span class="n">0.96</span>, "sources": <span class="n">9</span><br>
+}
+      </div>
+    </div>
+  </div>
+  <div class="trust rv">
+    <span class="tr"><b>✓</b> CCPA-ready</span><span class="tr"><b>✓</b> Every field sourced</span>
+    <span class="tr"><b>✓</b> Opt-outs honored</span><span class="tr"><b>✓</b> No shadow profiles</span>
+    <span class="tr"><b>✓</b> SOC 2</span><span class="tr"><b>✓</b> Point-in-time auditable</span>
+  </div>
+</div></section>
+
+
+<!-- FAQ — DRAFT copy for Michael's edit; must stay mirrored with the FAQPage JSON-LD above -->
+<section class="faq-sec" id="faq"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker rv">FAQ</div>
+    <h2 class="rv d1">Common questions.</h2>
+  </div>
+  <div class="faq-grid rv d2">
+    <details open><summary>What is a people data API?</summary><p>A people data API returns structured information about a person or household from an identifier such as an email, name or address. Nyne's people data API resolves the identifier against a graph of over two billion people and returns verified attributes with confidence scores, sources and timestamps.</p></details>
+    <details><summary>What data does Nyne's enrichment API return?</summary><p>Demographics, residence, income and wealth, affinities, life events, state, county and national filings, contact, social and career and company data. Every field carries a confidence score, source and freshness timestamp.</p></details>
+    <details><summary>How does Nyne source its data?</summary><p>Nyne's autonomous AI agents continuously source and verify data across the open web and public records, including state, county and national filings. Records are matched into the graph, deduplicated, scored and time-stamped.</p></details>
+    <details><summary>Can AI agents use Nyne?</summary><p>Yes. Nyne is built for AI agents: one API call returns the structured person as typed JSON an agent can act on, and webhooks push life events into CRMs, CDPs and agent workflows in real time.</p></details>
+    <details><summary>Does Nyne cover consumers as well as professionals?</summary><p>Both. Nyne covers consumer and household attributes such as demographics, wealth and affinities alongside professional context such as roles, companies and job changes, in one unified graph.</p></details>
+    <details><summary>Is Nyne privacy compliant?</summary><p>Nyne is CCPA-ready: every field is sourced, opt-outs are honored, there are no shadow profiles and records are point-in-time auditable.</p></details>
+  </div>
+</div></section>
+
+<!-- ============ FOOTER CTA ============ -->
+<footer class="foot-sec">
+  <div class="foot-art" aria-hidden="true"></div>
+  <div class="wrap foot-in">
+    <div class="kicker lt rv">Get started</div>
+    <h2 class="rv d1">Meet the people behind your data.</h2>
+    <p class="sub lt rv d2" style="max-width:480px">Free sandbox credits. Real responses from the live graph in under a minute.</p>
+    <div class="foot-ctas rv d3"><a class="cta lt" href="https://nyne.ai">Get API access</a><a class="cta olt" href="https://nyne.ai">Book a walkthrough</a></div>
+  </div>
+  <div class="wrap legal">
+    <span>© 2026 Nyne.ai · Concept page. All example people, households &amp; metrics are fictional.</span>
+    <span>Artwork: Seurat, La Grande Jatte (1884) · Art Institute of Chicago · CC0</span>
+  </div>
+</footer>
+
+<script>
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=id=>document.getElementById(id);
+
+/* ---------- scroll reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.18});
+document.querySelectorAll('.rv,.ev').forEach(el=>io.observe(el));
+
+/* ---------- hero name typing ---------- */
+const SCR='abcdefghijklmnopqrstuvwxyz0123456789';
+function typeInto(el,text,speed){
+  let i=0;el.textContent='';
+  const t=setInterval(()=>{i++;
+    if(i>=text.length){el.textContent=text;clearInterval(t);return}
+    el.textContent=text.slice(0,i)+SCR[Math.floor(Math.random()*SCR.length)];
+  },speed||38);
+  return t;
+}
+function heroCycle(){setTimeout(()=>typeInto($('heroName'),'Elena Marsh'),500)}
+if(!reduced){heroCycle();setInterval(heroCycle,10000)}else{$('heroName').textContent='Elena Marsh'}
+
+/* ---------- fan pill spotlight ---------- */
+const fgs=[...document.querySelectorAll('.fgroup')];
+let fi=0;
+function fanStep(){
+  fgs.forEach((g,j)=>{g.classList.toggle('hot',j===fi);g.classList.toggle('dim',j!==fi)});
+  fi=(fi+1)%fgs.length;
+}
+fanStep();
+if(!reduced)setInterval(fanStep,2200);
+
+/* ---------- personas (fictional, B2C) ---------- */
+const PEOPLE=[
+  {av:'elena',ty:'Member · resolved',name:'Elena Marsh',
+   fields:[['Age','38'],['City','Greenwich, CT'],['HH income','$500K+'],['Household','2A · 1C']],
+   aff:['sailing','fine wine','philanthropy','first class'],
+   sig:'HOME PURCHASE · 18d',conf:'identity 0.97'},
+  {av:'darius',ty:'Prospect · resolved',name:'Darius Cole',
+   fields:[['Age','29'],['City','Austin, TX'],['HH income','$100–150K'],['Household','1A']],
+   aff:['fitness','travel hacking','early adopter'],
+   sig:'NEW MOVER · 32d',conf:'identity 0.94'},
+  {av:'sofia',ty:'Customer · resolved',name:'Sofia Nakamura',
+   fields:[['Age','45'],['City','San Francisco'],['HH income','$250–500K'],['Household','2A · 2C']],
+   aff:['luxury auto','art collecting','wellness'],
+   sig:'LEASE END · 41d',conf:'identity 0.96'}
+];
+const AGGS=[
+  {seg:'Luxury Travel Intenders',n:'3.1M',f:'92',w:'$310K'},
+  {seg:'New Movers · Premium ZIPs',n:'940K',f:'88',w:'$185K'},
+  {seg:'Luxury Auto In-Market',n:'1.6M',f:'90',w:'$240K'}
+];
+let pTimer=null;
+function renderPerson(i){
+  const p=PEOPLE[i],a=AGGS[i];
+  $('pAv').innerHTML='<img src="assets/people/'+p.av+'.jpg" alt="Fictional example person">';$('pTy').textContent=p.ty;
+  clearInterval(pTimer);pTimer=typeInto($('pName'),p.name);
+  $('pGrid').innerHTML=p.fields.map(([l,v],j)=>
+    `<div class="pf"><div class="l">${l}</div><div class="v wipe" style="--pd:${j*0.09}s">${v}</div></div>`).join('');
+  $('pAff').innerHTML=p.aff.map(x=>`<span>${x}</span>`).join('');
+  $('pRow').innerHTML=`<span class="sigp"><i></i>${p.sig}</span><span class="confp">✓ ${p.conf}</span>`;
+  $('aggSeg').textContent=a.seg;$('aggN').textContent=a.n;
+  $('aggF').innerHTML=a.f+'<span style="font-size:10px;color:rgba(249,250,246,.4)">/100</span>';
+  $('aggW').textContent=a.w;
+  document.querySelectorAll('.pdot').forEach((d,j)=>{
+    d.classList.remove('on');
+    d.querySelector('i').style.transform=j<i?'scaleX(1)':'scaleX(0)';
+    if(j===i){void d.offsetWidth;d.classList.add('on')}
+  });
+}
+let pi=0;renderPerson(0);
+if(!reduced)setInterval(()=>{pi=(pi+1)%PEOPLE.length;renderPerson(pi)},5000);
+
+/* ---------- audience search (B2C-first) ---------- */
+const CATS=[['demographics','Demographics'],['residence','Residence'],['wealth','Wealth'],['affinities','Affinities'],
+  ['event','Life event'],['financial','Financial'],['engagement','Engagement'],['role','Role'],['company','Company'],['contact','Contact']];
+$('schips').innerHTML=CATS.map(([k,l])=>`<span class="chip" data-k="${k}"><i></i>${l}</span>`).join('');
+const PROMPTS=[
+  {text:'Households in coastal Florida with $1M+ homes and boating affinities',
+   cats:['residence','wealth','affinities','demographics'],count:412380,conf:'0.94',lat:198,
+   results:[
+     {m:'carol',n:'Carol & Jim Hutchins',t:'Naples, FL · HH $350K+ · yacht club',s:'HOME PURCHASE · 18d',sc:'0.95'},
+     {m:'miguel',n:'Miguel Serrano',t:'Sarasota, FL · waterfront home · boater',s:'BOAT REGISTERED · 60d',sc:'0.93'},
+     {m:'albright',n:'The Albright Household',t:'Vero Beach, FL · $1.4M home est.',s:'NEW MOVER · 90d',sc:'0.91'}]},
+  {text:'Recent movers in Denver suburbs who just bought their first home',
+   cats:['event','residence','demographics'],count:28914,conf:'0.93',lat:176,
+   results:[
+     {m:'kira',n:'Kira Patel',t:'Littleton, CO · first-time buyer',s:'HOME PURCHASE · 12d',sc:'0.96'},
+     {m:'jon',n:'Jon & Amy Reyes',t:'Arvada, CO · relocated from Chicago',s:'NEW MOVER · 25d',sc:'0.94'},
+     {m:'tessa',n:'Tessa Browning',t:'Golden, CO · new household formed',s:'HOME PURCHASE · 31d',sc:'0.92'}]},
+  {text:'Frequent international travelers with premium cards and hotel loyalty status',
+   cats:['affinities','financial','engagement'],count:1902447,conf:'0.95',lat:204,
+   results:[
+     {m:'elena',n:'Elena Marsh',t:'Greenwich, CT · 14 intl trips/yr',s:'STATUS MATCH · elite',sc:'0.97'},
+     {m:'omar',n:'Omar Aziz',t:'Chicago, IL · premium card · 9 trips/yr',s:'LOUNGE SIGNALS',sc:'0.94'},
+     {m:'lena',n:'Lena Fischer',t:'Miami, FL · hotel elite · cruise affinity',s:'TRIP BOOKED · 7d',sc:'0.93'}]},
+  {text:'Heads of data at Series B fintechs who changed jobs in the last 90 days',
+   cats:['role','company','event','contact'],count:1284,conf:'0.94',lat:212,
+   results:[
+     {m:'priya',n:'Priya Raman',t:'Head of Data · Ledgerline · SF',s:'JOB CHANGE · 31d',sc:'0.96'},
+     {m:'tomas',n:'Tomás Rivera',t:'Head of Data Platform · Quillpay · NYC',s:'JOB CHANGE · 58d',sc:'0.95'},
+     {m:'aisha',n:'Aisha Bell',t:'Director of Data · Fernbrook · Austin',s:'JOB CHANGE · 12d',sc:'0.93'}]}
+];
+let sTimers=[];const sLater=(fn,ms)=>sTimers.push(setTimeout(fn,ms));
+function rollCount(el,target,dur){
+  const t0=performance.now();
+  (function tick(now){
+    const k=Math.min(1,((now||performance.now())-t0)/dur),e=1-Math.pow(1-k,3);
+    el.textContent=Math.round(target*e).toLocaleString();
+    if(k<1)requestAnimationFrame(tick);
+  })(performance.now());
+}
+function runPrompt(p){
+  sTimers.forEach(clearTimeout);sTimers=[];
+  const sq=$('sq');sq.classList.remove('ph');sq.textContent='';
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  $('scount').textContent='0';$('sconf').innerHTML='avg confidence <b>—</b>';$('slat').textContent='— ms';
+  $('sres').innerHTML=p.results.map(r=>
+    `<div class="r"><div class="av"><img src="assets/people/${r.m}.jpg" alt=""></div><div><div class="nm">${r.n}</div><div class="tt">${r.t}</div></div><span class="sig">${r.s}</span><span class="sc">${r.sc}</span></div>`).join('');
+  const sp=reduced?0:26;let i=0;
+  (function type(){if(i<=p.text.length){sq.textContent=p.text.slice(0,i);i++;sLater(type,sp)}})();
+  const t1=p.text.length*sp+180;
+  p.cats.forEach((k,j)=>sLater(()=>document.querySelector(`.chip[data-k="${k}"]`).classList.add('on'),t1+j*140));
+  const t2=t1+p.cats.length*140+220;
+  sLater(()=>{if(reduced){$('scount').textContent=p.count.toLocaleString()}else{rollCount($('scount'),p.count,1100)}
+    $('sconf').innerHTML='avg confidence <b>'+p.conf+'</b>';$('slat').textContent=p.lat+' ms'},t2);
+  p.results.forEach((_,j)=>sLater(()=>$('sres').children[j].classList.add('show'),t2+650+j*280));
+}
+let spi=0;runPrompt(PROMPTS[0]);
+if(!reduced)setInterval(()=>{spi=(spi+1)%PROMPTS.length;runPrompt(PROMPTS[spi])},9000);
+
+/* ---------- record enrich cycle ---------- */
+const recStage=$('recStage'),recPct=$('recPct'),recFill=$('recFill');
+function recCycle(){
+  recStage.classList.remove('playrec');void recStage.offsetWidth;recStage.classList.add('playrec');
+  const t0=performance.now(),S=800,E=5600;
+  (function tick(now){
+    const el=now-t0;
+    if(el<S){recPct.textContent='38%';recFill.style.transform='scaleX(0.38)'}
+    else if(el<=E){const k=(el-S)/(E-S),v=Math.round(38+k*(97-38));
+      recPct.textContent=v+'%';recFill.style.transform='scaleX('+(v/100)+')'}
+    else{recPct.textContent='97%';recFill.style.transform='scaleX(0.97)';return}
+    requestAnimationFrame(tick);
+  })(performance.now());
+}
+if(reduced){recStage.classList.add('playrec');recPct.textContent='97%';recFill.style.transform='scaleX(0.97)'}
+else{
+  // start when scrolled into view, then loop
+  const rio=new IntersectionObserver(es=>{if(es[0].isIntersecting){recCycle();setInterval(recCycle,10000);rio.disconnect()}},{threshold:.3});
+  rio.observe(recStage);
+}
+</script>
+</body>
+</html>
